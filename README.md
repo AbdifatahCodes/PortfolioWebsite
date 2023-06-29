@@ -18,9 +18,9 @@ This repository contains the code for my personal portfolio website. The site is
 
 To get started with the project, follow these steps:
 
-1. Clone the repository: `git clone <repository-url>`
-2. Install the dependencies: `npm install`
-3. Run the development server: `npm run dev`
+1. Clone the repository: `git clone https://github.com/AbdifatahCodes/PortfolioWebsite.git`
+2. Install the dependencies: `yarn add`
+3. Run the development server: `yarn run dev`
 4. Open your browser and visit `http://localhost:3000` to view the site locally.
 
 ## Contribution
