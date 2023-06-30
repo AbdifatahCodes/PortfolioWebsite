@@ -1,6 +1,5 @@
 import Layout from '@/components/layout'
 import The3Balls from '@/components/the3Balls'
-import { FaGithub } from 'react-icons/fa'
 import { MdDateRange } from 'react-icons/md'
 
 export default function Home() {
