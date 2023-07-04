@@ -29,13 +29,18 @@ export default function Home() {
               <div className='px-8 space-y-1'>
                 <p className='text-gray-dark dark:text-gray-main font-roboto text-2xl'>In my pursuit of mastery, I have cultivated a versatile set of skills that empower me to tackle diverse challenges with confidence. With a passion for continuous learning, I am always ready to embrace new opportunities and expand my skill set further.</p>
               </div>
-              <div>
+              <div className='px-16 pt-3'>
                 {/* A CSS GRID WILL WORK WONDERS ON THIS SECTION */}
-                <ol>
-                  <li>Javascript</li>
-                  <li>Javascript</li>
-                  <li>Javascript</li>
-                  <li>Javascript</li>
+                <ol className='grid grid-cols-4 gap-5 list-disc text-2xl font-extrabold font-quicksand text-gray-dark dark:text-gray-main'>
+                  <li>HTML5</li>
+                  <li>TailwindCSS</li>
+                  <li>Javascript ES6</li>
+                  <li>ReactJS</li>
+                  <li>Typescript</li>
+                  <li>NextJS</li>
+                  <li>NodeJS</li>
+                  <li>Golang</li>
+                  <li>NoSql & Git</li>
                 </ol>
               </div>
             </div>
