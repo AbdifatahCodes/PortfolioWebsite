@@ -1,5 +1,4 @@
 import MyReadsList from "@/components/myReadsList";
-import { MdDateRange } from "react-icons/md";
 
 export default function MyBackgroundSection() {
   return (
