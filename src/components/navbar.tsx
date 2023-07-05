@@ -32,7 +32,7 @@ export default function Navbar(props : any) {
                     <a href="#">Projects</a>
                     <a href="#">Blog</a>
                     <a href="#">Resume</a>
-                    <a href="#">Contact</a>
+                    <a href="#contact-section">Contact</a>
                     </li>
                 </ul>
                     <ThemeToggle/>
