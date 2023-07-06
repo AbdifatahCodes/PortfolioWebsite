@@ -2,7 +2,7 @@ import { skills } from './Objects/skillsObj.js'
 
 export default function SkillsList() {
   const skillsItems = skills.map(skill => (
-    <li>{skill}</li>
+    <li key={skill.id}>{skill.name}</li>
   ));
   
   return (
