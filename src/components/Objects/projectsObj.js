@@ -1,0 +1,32 @@
+export const projects = [
+  {
+    id: 0,
+    name: "Open Cloud Revised",
+    imgName: "OCRNameLogo",
+    imgUrl: "/OCRNameLogo.png",
+    imgAlt: "Open Cloud Revised Full Logo",
+    imgWidth: 706,
+    imgHeight: 240,
+    imgBlurDataUrl: "OCRNameLogo.png",
+    status: "Live!",
+    statusCode: "live",
+    description: "A remarkable, cost-free open-source cloud backup tool crafted exclusively for Linux. Empowered by the cutting-edge Storj Decentralized Cloud Network, it delivers unmatched security, scalability, and reliability. Safeguard your valuable data with this exceptional solution designed to meet your diverse storage needs.",
+    liveUrl: "#",
+    blogUrl: "#",
+  },
+  {
+    id: 1,
+    name: "Firepass",
+    imgName: "OCRNameLogo",
+    imgUrl: "/OCRNameLogo.png",
+    imgAlt: "Open Cloud Revised Full Logo",
+    imgWidth: 706,
+    imgHeight: 240,
+    imgBlurDataUrl: "OCRNameLogo.png",
+    status: "Coming Soon!",
+    statusCode: "coming-soon",
+    description: "A self-hostable password manager built with Firebase and Next.js. Safely store and manage your passwords, ensuring convenience and security. Take control of your digital credentials with ease, empowering you to protect your online accounts effectively and effortlessly.",
+    liveUrl: "#",
+    blogUrl: "#",
+  }
+]
