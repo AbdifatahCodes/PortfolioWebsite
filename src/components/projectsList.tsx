@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { Fragment } from 'react';
 import { projects } from './Objects/projectsObj.js'
 import { BsFillCircleFill, BsFillClockFill, } from 'react-icons/bs'
 
