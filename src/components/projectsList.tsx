@@ -4,7 +4,7 @@ import { BsFillCircleFill, BsFillClockFill, } from 'react-icons/bs'
 
 export default function ProjectsList() {
   const projectsItems = projects.map(project => (
-    <div className='flex flex-col space-y-2 mr-20'>
+    <div key={project.id} className='flex flex-col space-y-2 mr-20'>
       <div className='bg-black dark:bg-white rounded-md'>
         <Image
           src={project.imgUrl}

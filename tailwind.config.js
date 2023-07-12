@@ -12,10 +12,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-      sm: '480px',
+      sm: '640px',
       md: '768px',
-      lg: '976px',
-      xl: '1440px',
+      lg: '900px',
+      xl: '1180px',
     },
       colors: {
         'dark-main-bg': '#121b2e',
