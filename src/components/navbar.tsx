@@ -65,8 +65,8 @@ export default function Navbar(props: any) {
 					</div>
 				</nav>
 				<div>
-					<ul className={`w-full flex-grow lg:items-center lg:w-auto lg:hidden border p-2 my-1 bg-white dark:bg-black-main ${navUlIsOpen ? "hidden" : "block"}`}>
-						<li className={`text-black dark:text-white font-robotocon px-1 sm:px-2 text-xl space-y-2 mt-1 flex flex-col`}>
+					<ul className={`flex-grow lg:items-center lg:w-auto lg:hidden border rounded-lg mx-2 my-2 py-2 bg-white dark:bg-black-main ${navUlIsOpen ? "hidden" : "block"}`}>
+						<li className={`text-black dark:text-white font-robotocon px-1 sm:px-2 text-xl space-y-1 flex flex-col`}>
 							<a href="#about-section" className='bg-gray dark:bg-black-bg px-2 sm:px-4'>About</a>
 							<a href="#projects-section" className='px-2 sm:px-4'>Projects</a>
 							<a href="#" className='bg-gray dark:bg-black-bg px-2 sm:px-4'>Blog</a>
