@@ -43,11 +43,12 @@ export default function ProjectsList() {
           <FiExternalLink />
         </a>
       </div>
+      <hr className='text-gray md:hidden' />
     </div>
   ));
   
   return (
-    <div className='px-5 md:px-10 lg:mr-5 grid grid-cols-2 gap-3 md:gap-5'>
+    <div className='px-5 md:px-10 lg:mr-5 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
       {projectsItems}
     </div>
   )
