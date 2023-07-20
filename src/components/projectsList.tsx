@@ -32,8 +32,8 @@ export default function ProjectsList() {
         }
         <p className='italic text-gray-dark dark:text-gray-main font-roboto font-medium'>{ project.status }</p>
       </div>
-      <p className='text-gray-dark dark:text-gray-main font-roboto text-sm md:text-base'>{ project.description }</p>
-      <div className='flex flex-row justify-between text-gray-dark dark:text-gray-main font-roboto font-bold italic text-xs md:text-base'>
+      <p className='text-gray-dark dark:text-gray-main font-roboto text-sm sm:text-base'>{ project.description }</p>
+      <div className='flex flex-row justify-between text-gray-dark dark:text-gray-main font-roboto font-bold italic text-xs sm:text-sm md:text-base'>
         <a href={project.blogUrl} className='flex flex-row space-x-1'>
           <span>Read</span>
           <FiExternalLink />
