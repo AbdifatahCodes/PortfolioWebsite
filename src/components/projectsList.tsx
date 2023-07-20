@@ -35,11 +35,11 @@ export default function ProjectsList() {
       <p className='text-gray-dark dark:text-gray-main font-roboto text-sm sm:text-base'>{ project.description }</p>
       <div className='flex flex-row justify-between text-gray-dark dark:text-gray-main font-roboto font-bold italic text-xs sm:text-sm md:text-base'>
         <a href={project.blogUrl} className='flex flex-row space-x-1'>
-          <span>Read</span>
+          <span>Read More</span>
           <FiExternalLink />
         </a>
         <a href={project.liveUrl} className='flex flex-row space-x-1'>
-          <span>View</span>
+          <span>View Live</span>
           <FiExternalLink />
         </a>
       </div>
