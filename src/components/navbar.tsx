@@ -4,6 +4,7 @@ import { FiTerminal } from 'react-icons/fi'
 import { MdMenu, MdCancelPresentation, } from 'react-icons/md'
 import ThemeToggle from '@/components/themeToggle'
 import Link from 'next/link'
+import {Link as LinkScroll, animateScroll as scroll} from 'react-scroll'
 
 export default function Navbar(props: any) {
 	const [navUlIsOpen, setNavUlIsOpen] = useState(true);
@@ -35,7 +36,14 @@ export default function Navbar(props: any) {
 						<div className='hidden lg:block'>
 							<ul className={`w-full flex-grow lg:flex lg:items-center lg:w-auto`}>
 								<li className={`text-black dark:text-white font-robotocon text-xl mt-1 space-x-6`}>
-									<Link href="#about-section">About</Link>
+									<LinkScroll
+										to="about-section"
+										spy={true}
+										smooth={true}
+										offset={-20}
+										duration={1000}
+										className='cursor-pointer'
+									>About</LinkScroll>
 									<Link href="#projects-section">Projects</Link>
 									<Link href="#">Blog</Link>
 									<Link href="#">Resume</Link>
