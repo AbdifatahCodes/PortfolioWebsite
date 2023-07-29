@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FiTerminal } from 'react-icons/fi'
 import { MdMenu, MdCancelPresentation, } from 'react-icons/md'
 import ThemeToggle from '@/components/themeToggle'
 import Link from 'next/link'
-import {Link as LinkScroll, animateScroll as scroll} from 'react-scroll'
+import {Link as LinkScroll,} from 'react-scroll'
 
 export default function Navbar(props: any) {
 	const [navUlIsOpen, setNavUlIsOpen] = useState(true);
@@ -44,10 +44,24 @@ export default function Navbar(props: any) {
 										duration={1000}
 										className='cursor-pointer'
 									>About</LinkScroll>
-									<Link href="#projects-section">Projects</Link>
+									<LinkScroll
+										to="projects-section"
+										spy={true}
+										smooth={true}
+										offset={-20}
+										duration={1000}
+										className='cursor-pointer'
+									>Projects</LinkScroll>
 									<Link href="#">Blog</Link>
 									<Link href="#">Resume</Link>
-									<Link href="#contact-section">Contact</Link>
+									<LinkScroll
+										to="contact-section"
+										spy={true}
+										smooth={true}
+										offset={-20}
+										duration={1000}
+										className='cursor-pointer'
+									>Contact</LinkScroll>
 								</li>
 							</ul>
 						</div>

@@ -13,7 +13,7 @@ export default function WhichTheme() {
     } else if (systemTheme == "light") {
       return("dark");
     } else if (systemTheme == undefined) {
-      console.log("You've discovered an edge-case ERROR, Please report this to the Maintainers using the ErrorID-WHICHTHEME876787. Pardon the Inconvenience.");
+      console.log("SystemTheme Variable is undefined.");
     }
   }
 }

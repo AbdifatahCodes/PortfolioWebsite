@@ -2,7 +2,7 @@ import { motion, } from "framer-motion";
 import WhichTheme from "@/components/whichTheme"
 
 export default function NameJiggle() {
-  
+
   function transitionValues(delayValue: any) {
     let transitionReturn = {
       y: {
@@ -33,7 +33,7 @@ export default function NameJiggle() {
   };
 
   const yoyoYPoints = ["0rem", "-1rem", "-2rem", "-1rem", "0rem"];
-  let yoyoColorGradient = [(WhichTheme() === "light") ? "#ffffff" : "#000000", "#ff0000", "#ff00fb", "#0003ff", "#00fffa", "#21ff00", "#fbff00"];
+  let yoyoColorGradient = [(WhichTheme() === "light") ? "#ffffff" : "#000000", "#ff0000", "#ff00fb", "#0003ff", "#00fffa", "#21ff00", "#fbff00", (WhichTheme() === "light") ? "#ffffff" : "#000000"];
 
   let letterAnimate = {
     y: [...yoyoYPoints, ...yoyoYPoints],
@@ -47,22 +47,18 @@ export default function NameJiggle() {
   }
 
   const nameList = makeArrrayFromString("Abdifatah Osman");
-  let delayDifVal = 1
+  let delayDifVal = 0.8
 
   const AnimatedLetters = nameList.map((letter, index) => {
-    let customIndex = index;
-
     if (letter == " ") {
       return (
-        <p>&nbsp;</p>
+        <p key={index}>&nbsp;</p>
       )
     } else {
-      if (index > 0) {
-        delayDifVal = delayDifVal + 0.2;
-      }
+      delayDifVal = delayDifVal + 0.2;
       return (
         <motion.p
-          key={customIndex}
+          key={index}
           transition={letterTransition(delayDifVal)}
           animate={letterAnimate}
         >{letter}</motion.p>
