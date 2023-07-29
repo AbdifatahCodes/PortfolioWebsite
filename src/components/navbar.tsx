@@ -35,14 +35,14 @@ export default function Navbar(props: any) {
 					<div className='flex space-x-6'>
 						<div className='hidden lg:block'>
 							<ul className={`w-full flex-grow lg:flex lg:items-center lg:w-auto`}>
-								<li className={`text-black dark:text-white font-robotocon text-xl mt-1 space-x-6`}>
+								<li className={`text-black dark:text-white font-robotocon text-xl mt-1 space-x-6 underline-offset-4`}>
 									<LinkScroll
 										to="about-section"
 										spy={true}
 										smooth={true}
 										offset={-20}
 										duration={1000}
-										className='cursor-pointer'
+										className='cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
 									>About</LinkScroll>
 									<LinkScroll
 										to="projects-section"
@@ -50,17 +50,23 @@ export default function Navbar(props: any) {
 										smooth={true}
 										offset={-20}
 										duration={1000}
-										className='cursor-pointer'
+										className='cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
 									>Projects</LinkScroll>
-									<Link href="#">Blog</Link>
-									<Link href="#">Resume</Link>
+									<Link 
+										href="#"
+										className='cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+									>Blog</Link>
+									<Link 
+										href="#"
+										className='cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+									>Resume</Link>
 									<LinkScroll
 										to="contact-section"
 										spy={true}
 										smooth={true}
 										offset={-20}
 										duration={1000}
-										className='cursor-pointer'
+										className='cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
 									>Contact</LinkScroll>
 								</li>
 							</ul>
@@ -90,11 +96,38 @@ export default function Navbar(props: any) {
 				<div>
 					<ul className={`flex-grow lg:items-center lg:w-auto lg:hidden border rounded-lg mx-2 my-2 py-2 bg-white dark:bg-black-main ${navUlIsOpen ? "hidden" : "block"}`}>
 						<li className={`text-black dark:text-white font-robotocon px-1 sm:px-2 text-xl space-y-1 flex flex-col`}>
-							<Link href="#about-section" className='bg-gray dark:bg-black-bg px-2 sm:px-4'>About</Link>
-							<Link href="#projects-section" className='px-2 sm:px-4'>Projects</Link>
-							<Link href="#" className='bg-gray dark:bg-black-bg px-2 sm:px-4'>Blog</Link>
-							<Link href="#" className='px-2 sm:px-4'>Resume</Link>
-							<Link href="#contact-section" className='bg-gray dark:bg-black-bg px-2 sm:px-4'>Contact</Link>
+							<LinkScroll
+								to="about-section"
+								spy={true}
+								smooth={true}
+								offset={-20}
+								duration={1000}
+								className='bg-gray dark:bg-black-bg px-2 sm:px-4 cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+							>About</LinkScroll>
+							<LinkScroll
+								to="projects-section"
+								spy={true}
+								smooth={true}
+								offset={-20}
+								duration={1000}
+								className='px-2 sm:px-4 cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+							>Projects</LinkScroll>
+							<Link 
+								href="#"
+								className='bg-gray dark:bg-black-bg px-2 sm:px-4 cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+							>Blog</Link>
+							<Link 
+								href="#"
+								className='px-2 sm:px-4 cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+							>Resume</Link>
+							<LinkScroll
+								to="contact-section"
+								spy={true}
+								smooth={true}
+								offset={-20}
+								duration={1000}
+								className='bg-gray dark:bg-black-bg px-2 sm:px-4 cursor-pointer hover:underline hover:text-neutral-400  dark:hover:text-neutral-300'
+							>Contact</LinkScroll>
 						</li>
 					</ul>
 				</div>

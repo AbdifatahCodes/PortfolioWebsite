@@ -46,7 +46,7 @@ export default function NameJiggle() {
     )
   }
 
-  const nameList = makeArrrayFromString("Abdifatah Osman");
+  const nameList = makeArrrayFromString(process.env.NEXT_PUBLIC_ANIMATED_NAME);
   let delayDifVal = 0.8
 
   const AnimatedLetters = nameList.map((letter, index) => {
