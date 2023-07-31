@@ -1,7 +1,8 @@
 import NameJiggle from "@/components/nameJiggle"
 import The3Balls from "@/components/the3Balls"
-import { Link as LinkScroll, animateScroll as scroll } from 'react-scroll'
+import { Link as LinkScroll } from 'react-scroll'
 import { VscDebugContinueSmall } from 'react-icons/vsc'
+import ScrollProgressIndicator from "@/components/scrollProgressIndicator"
 
 export default function HeroSection() {
     return (
