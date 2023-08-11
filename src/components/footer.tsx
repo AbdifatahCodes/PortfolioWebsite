@@ -1,5 +1,6 @@
 import { FaInstagram, FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa'
 import { BsQuestionCircle } from 'react-icons/bs'
+import KeyWord from '@/components/keyWord';
 
 export default function Footer() {
     return (
@@ -8,7 +9,7 @@ export default function Footer() {
           <div id='contact-section' className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto'>
             <div className='flex flex-col mb-6 md:mb-10'>
               <div className='flex flex-row justify-between'>
-                <p className='px-4 md:px-8 mt-6 mb-2 md:mb-4 text-base sm:text-xl md:text-2xl font-quicksand font-bold ttext-gray-dark dark:text-gray-main'>Feel free to reach out or send me an email directly at sample@gmail.com.</p>
+                <p className='px-4 md:px-8 mt-6 mb-2 md:mb-4 text-base sm:text-xl md:text-2xl font-quicksand font-bold ttext-gray-dark dark:text-gray-main'>Feel free to reach out or send me an email directly at <KeyWord simple="true">sample@gmail.com</KeyWord>.</p>
               </div>
               <div className='px-4 md:px-8'>
                 <form action="/" className='space-y-3'>

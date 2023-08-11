@@ -11,8 +11,8 @@ export const projects = [
     status: "Coming Soon!",
     statusCode: "coming-soon",
     description: "A remarkable, cost-free open-source cloud backup tool crafted exclusively for Linux. Empowered by the cutting-edge Storj Decentralized Cloud Network, it delivers unmatched security, scalability, and reliability. Safeguard your valuable data with this exceptional solution designed to meet your diverse storage needs.",
-    liveUrl: "#",
-    blogUrl: "#",
+    liveUrl: "/blog",
+    blogUrl: "/blog",
   },
   {
     id: 1,
@@ -26,7 +26,7 @@ export const projects = [
     status: "Coming Soon!",
     statusCode: "coming-soon",
     description: "A self-hostable password manager built with Firebase and Next.js. Safely store and manage your passwords, ensuring convenience and security. Take control of your digital credentials with ease, empowering you to protect your online accounts effectively and effortlessly.",
-    liveUrl: "#",
-    blogUrl: "#",
+    liveUrl: "/blog",
+    blogUrl: "/blog",
   }
 ]

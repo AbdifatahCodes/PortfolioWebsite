@@ -9,19 +9,23 @@ import SummarySection from '@/sections/summary'
 export default function Home() {
   return (
     <Layout title='Abdifatah Osman'>
-        <div id='home' className='space-y-6 lg:space-y-12'>
-          <HeroSection />
-          <div id='divider' className='p-1 lg:p-4'></div>
-          <SkillsSection />
-          <div id='divider' className='p-1'></div>
-          <ProjectsSection />
-          <div id='divider' className='p-1'></div>
-          <AboutSection />
-          <div id='divider' className='p-1'></div>
-          <MyBackgroundSection />
-          <div id='divider' className='p-1'></div>
-          <SummarySection />
+      <div id='home' className='space-y-6 lg:space-y-12'>
+        <HeroSection />
+        <div id='Watermark'>
+          <p className='fixed bottom-10 left-0 -z-10 font-quicksand font-extrabold text-9xl dark:text-watermark-dark text-watermark-light'
+          >Abdifatah Codes.</p>
         </div>
+        <div id='divider' className='p-1 lg:p-4'></div>
+        <SkillsSection />
+        <div id='divider' className='p-1'></div>
+        <ProjectsSection />
+        <div id='divider' className='p-1'></div>
+        <AboutSection />
+        <div id='divider' className='p-1'></div>
+        <MyBackgroundSection />
+        <div id='divider' className='p-1'></div>
+        <SummarySection />
+      </div>
     </Layout>
 
   )

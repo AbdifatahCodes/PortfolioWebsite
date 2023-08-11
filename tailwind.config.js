@@ -19,7 +19,11 @@ module.exports = {
     },
       colors: {
         'dark-main-bg': '#121b2e',
+        'dark-main-bg-grad1': '#224081',
         'light-main-bg': '#B9D2FC',
+        'light-main-bg-grad1': '#78a1e7',
+        'watermark-dark': '#778ebf',
+        'watermark-light': '#3b63a6',
         'black-main': '#100F0F',
         'gray-main': '#C1C1C1',
         'black-bg': '#242222',

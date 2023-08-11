@@ -5,6 +5,6 @@
 
 @layer base {
     body {
-        @apply dark:bg-dark-main-bg bg-light-main-bg
+        @apply bg-gradient-to-r dark:from-dark-main-bg dark:to-dark-main-bg-grad1 from-light-main-bg-grad1 to-light-main-bg
     }
 }
