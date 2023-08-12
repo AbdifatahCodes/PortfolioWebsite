@@ -51,29 +51,22 @@ export default function Footer() {
           <hr className='text-black dark:text-white' />
           <div className='flex flex-row justify-center space-x-4 p-3'>
             <div className='shrink-0'>
-              <a href="#">
+              <a href="https://github.com/AbdifatahCodes">
                   <FaGithub
                     size={27}
                   />
               </a>
             </div>
             <div className='shrink-0'>
-              <a href="#">
+              <a href="https://twitter.com/@AbdifatahCodes">
                   <FaTwitter
                     size={27}
                   />
               </a>
             </div>
             <div className='shrink-0'>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/abdifatah-codes">
                   <FaLinkedinIn
-                    size={27}
-                  />
-              </a>
-            </div>
-            <div className='shrink-0'>
-              <a href="#">
-                  <FaInstagram
                     size={27}
                   />
               </a>
