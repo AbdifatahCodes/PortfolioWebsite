@@ -7,6 +7,7 @@ export default function Post() {
   const router = useRouter();
   const splitUrl = router.asPath.split('/');
   const lastSlug = splitUrl[splitUrl.length - 1];
+  console.log(lastSlug);
 
   const activePost = posts.filter(post => post.slugID == lastSlug).map(filteredPost => (
     <div key={filteredPost.id} className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto bg-white dark:bg-black rounded-xl sm:rounded-3xl shadow-lg items-center border'>
