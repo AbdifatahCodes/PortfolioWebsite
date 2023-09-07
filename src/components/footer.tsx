@@ -76,7 +76,7 @@ export default function Footer() {
           <hr className='text-gray' />
           <div className='flex flex-row justify-center space-x-2 p-1'>
             <div className='font-robotocon text-base md:text-lg'>
-              <p>Made by <span className='font-oswald font-bold'>Abdifatah Osman</span> &copy; 2023</p>
+              <p>Made by <span className='font-oswald font-bold'>Abdifatah Osman</span> &copy; { new Date().getFullYear() }</p>
             </div>
           </div>
         </div>
