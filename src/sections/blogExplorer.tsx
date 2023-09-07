@@ -2,51 +2,13 @@ import Link from "next/link";
 import { BsArrowRight, BsFillEyeFill } from "react-icons/bs";
 import { BiLike, BiDislike, } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
-
-const posts = [
-  {
-    id: 0,
-    title: 'Welcome to My Blog: An Introduction.',
-    bait: "Greetings and a warm welcome to my digital sanctuary, where the boundaries of technology, philosophy, and culture converge. I'm delighted that you've taken a moment to step into my world. Just as my portfolio website showcases my prowess as a Full-Stack Web Developer, this blog offers a broader canvas upon which I paint my passions, insights, and experiences for your enjoyment.",
-    views: 23455,
-    likes: 24343,
-    dislikes: 3422,
-    dateOfMaking: '20-09-2023',
-  },
-  {
-    id: 1,
-    title: 'Welcome to My Blog: An Introduction 2.',
-    bait: "Greetings and a warm welcome to my digital sanctuary, where the boundaries of technology, philosophy, and culture converge. I'm delighted that you've taken a moment to step into my world. Just as my portfolio website showcases my prowess as a Full-Stack Web Developer, this blog offers a broader canvas upon which I paint my passions, insights, and experiences for your enjoyment.",
-    views: 23455,
-    likes: 24343,
-    dislikes: 3422,
-    dateOfMaking: '20-09-2023',
-  },
-  {
-    id: 2,
-    title: 'Welcome to My Blog: An Introduction 3.',
-    bait: "Greetings and a warm welcome to my digital sanctuary, where the boundaries of technology, philosophy, and culture converge. I'm delighted that you've taken a moment to step into my world. Just as my portfolio website showcases my prowess as a Full-Stack Web Developer, this blog offers a broader canvas upon which I paint my passions, insights, and experiences for your enjoyment.",
-    views: 23455,
-    likes: 24343,
-    dislikes: 3422,
-    dateOfMaking: '20-09-2023',
-  },
-  {
-    id: 3,
-    title: 'Welcome to My Blog: An Introduction 4.',
-    bait: "Greetings and a warm welcome to my digital sanctuary, where the boundaries of technology, philosophy, and culture converge. I'm delighted that you've taken a moment to step into my world. Just as my portfolio website showcases my prowess as a Full-Stack Web Developer, this blog offers a broader canvas upon which I paint my passions, insights, and experiences for your enjoyment.",
-    views: 23455,
-    likes: 24343,
-    dislikes: 3422,
-    dateOfMaking: '20-09-2023',
-  },
-]
+import { posts } from "@/components/Objects/blogPostsObj";
 
 export default function BlogExplorer() {
   const postsItems = posts.map(post => (
     <div key={post.id} className="group bg-indigo-200 dark:bg-blog-dark hover:dark:bg-slate-800 hover:bg-gray-light px-5 py-4 rounded-xl space-y-2">
       <div className="space-y-2">
-        <Link href="" className="space-y-1" target="_blank" rel="noopener noreferrer">
+        <Link href={"/blog/posts/" + post.slugID} className="space-y-1" target="_blank" rel="noopener noreferrer">
           <div className="flex flex-row justify-between">
             <div className="flex flex-row align-baseline space-x-2 font-quicksand text-lg md:text-2xl group-hover:text-indigo-500">
               <p className="font-quicksand text-lg md:text-2xl group-hover:text-indigo-500">{post.title}</p>
