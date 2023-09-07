@@ -1,4 +1,5 @@
-import { FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 import { BsQuestionCircle } from 'react-icons/bs'
 import KeyWord from '@/components/keyWord';
 
@@ -51,21 +52,21 @@ export default function Footer() {
           <hr className='text-black dark:text-white' />
           <div className='flex flex-row justify-center space-x-4 p-3'>
             <div className='shrink-0'>
-              <a href="https://github.com/AbdifatahCodes">
+              <a href="https://github.com/AbdifatahCodes" target="_blank" rel="noopener noreferrer">
                   <FaGithub
                     size={27}
                   />
               </a>
             </div>
             <div className='shrink-0'>
-              <a href="https://twitter.com/@AbdifatahCodes">
-                  <FaTwitter
-                    size={27}
+              <a href="https://twitter.com/@AbdifatahCodes" target="_blank" rel="noopener noreferrer">
+                  <FaXTwitter
+                    size={26}
                   />
               </a>
             </div>
             <div className='shrink-0'>
-              <a href="https://www.linkedin.com/in/abdifatah-codes">
+              <a href="https://www.linkedin.com/in/abdifatah-codes" target="_blank" rel="noopener noreferrer">
                   <FaLinkedinIn
                     size={27}
                   />

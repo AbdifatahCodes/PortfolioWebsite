@@ -1,11 +1,4 @@
 
-
-// This is what I would add to the footer as a description on my blog on every /blog/* and the content would as below:
-
-// "Exploring Full-Stack Development, Philosophy, Social Cultures, and Music: A Blog Journey"
-// Dive into a world where full-stack development meets philosophy, social cultures, and music. Here, we bridge the technical and the cultural, offering valuable insights and thought-provoking discussions. Join me on this unique journey that explores the intersection of code and human experience, where we'll groove to the rhythms of both technology and life's diverse nuances.
-
-
 export default function BlogSummary() {
   return (
     <div id='summary-section' className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto bg-white dark:bg-black rounded-xl sm:rounded-3xl shadow-lg items-center border'>
