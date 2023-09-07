@@ -2,7 +2,6 @@ import NameJiggle from "@/components/nameJiggle"
 import The3Balls from "@/components/the3Balls"
 import { Link as LinkScroll } from 'react-scroll'
 import { VscDebugContinueSmall } from 'react-icons/vsc'
-import KeyWord from "@/components/keyWord"
 
 export default function BlogHeroSection() {
     return (

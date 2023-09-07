@@ -1,6 +1,7 @@
 import Layout from '@/components/layout'
 import BlogExplorer from '@/sections/blogExplorer'
 import BlogHeroSection from '@/sections/blogHero'
+import BlogSummary from '@/sections/blogSummary'
 
 export default function Blog() {
   return (
@@ -14,6 +15,7 @@ export default function Blog() {
         <div id='divider' className='p-1 lg:p-4'></div>
         <BlogExplorer />
         <div id='divider' className='p-1'></div>
+        <BlogSummary />
       </div>
     </Layout>
 

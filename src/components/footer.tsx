@@ -1,11 +1,6 @@
-import { FaInstagram, FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa'
 import { BsQuestionCircle } from 'react-icons/bs'
 import KeyWord from '@/components/keyWord';
-
-// This is what I would add to the footer as a description on my blog on every /blog/* and the content would as below:
-
-// "Exploring Full-Stack Development, Philosophy, Social Cultures, and Music: A Blog Journey"
-// Dive into a world where full-stack development meets philosophy, social cultures, and music. Here, we bridge the technical and the cultural, offering valuable insights and thought-provoking discussions. Join me on this unique journey that explores the intersection of code and human experience, where we'll groove to the rhythms of both technology and life's diverse nuances.
 
 export default function Footer() {
     return (

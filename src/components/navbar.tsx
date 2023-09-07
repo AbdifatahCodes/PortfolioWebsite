@@ -56,7 +56,7 @@ export default function Navbar(props: any) {
 										className={`cursor-pointer ${router.pathname === "/" ? "hidden" : ""} hover:underline hover:text-neutral-400  dark:hover:text-neutral-300`}
 									>Home</Link>
 									<LinkScroll
-										to="about-section"
+										to={new RegExp('^\/blog').test(router.pathname) ? "summary-section" : "about-section"}
 										spy={true}
 										smooth={true}
 										offset={-20}

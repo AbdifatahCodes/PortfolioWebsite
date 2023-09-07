@@ -96,7 +96,6 @@ export default function BlogExplorer() {
           </div>
         </div>
       </div>
-      <div id='divider' className='p-1 mb-20'></div>
     </div>
   )
 }
