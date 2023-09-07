@@ -8,7 +8,7 @@ import SummarySection from '@/sections/summary'
 
 export default function Home() {
   return (
-    <Layout title='Abdifatah Osman'>
+    <Layout title='Abdifatah Codes'>
       <div id='home' className='space-y-6 lg:space-y-12'>
         <HeroSection />
         <div id='Watermark'>

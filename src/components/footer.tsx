@@ -2,6 +2,11 @@ import { FaInstagram, FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa'
 import { BsQuestionCircle } from 'react-icons/bs'
 import KeyWord from '@/components/keyWord';
 
+// This is what I would add to the footer as a description on my blog on every /blog/* and the content would as below:
+
+// "Exploring Full-Stack Development, Philosophy, Social Cultures, and Music: A Blog Journey"
+// Dive into a world where full-stack development meets philosophy, social cultures, and music. Here, we bridge the technical and the cultural, offering valuable insights and thought-provoking discussions. Join me on this unique journey that explores the intersection of code and human experience, where we'll groove to the rhythms of both technology and life's diverse nuances.
+
 export default function Footer() {
     return (
       <footer id='footer'>
@@ -9,7 +14,7 @@ export default function Footer() {
           <div id='contact-section' className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto'>
             <div className='flex flex-col mb-6 md:mb-10'>
               <div className='flex flex-row justify-between'>
-                <p className='px-4 md:px-8 mt-6 mb-2 md:mb-4 text-base sm:text-xl md:text-2xl font-quicksand font-bold ttext-gray-dark dark:text-gray-main'>Feel free to reach out or send me an email directly at <KeyWord simple="true">sample@gmail.com</KeyWord>.</p>
+                <p className='px-4 md:px-8 mt-6 mb-2 md:mb-4 text-base sm:text-xl md:text-2xl font-quicksand font-bold text-gray-dark dark:text-gray-main'>Feel free to reach out or send me an email directly at <KeyWord simple="true">sample@gmail.com</KeyWord>.</p>
               </div>
               <div className='px-4 md:px-8'>
                 <form action="/" className='space-y-3'>

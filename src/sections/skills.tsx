@@ -1,5 +1,4 @@
 import SkillsList from "@/components/skillsList";
-import ScrollToTop from "@/components/scrollToTop";
 
 export default function SkillsSection() {
   return (
@@ -14,7 +13,6 @@ export default function SkillsSection() {
         <div className='px-8 md:px-16 pt-1 md:pt-3'>
           <SkillsList />
         </div>
-        <ScrollToTop />
       </div>
     </div>
   )

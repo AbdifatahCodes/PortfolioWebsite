@@ -24,6 +24,8 @@ module.exports = {
         'light-main-bg-grad1': '#78a1e7',
         'watermark-dark': '#778ebf',
         'watermark-light': '#3b63a6',
+        'blog-dark': '#010817',
+        'blog-pale-dark': '#172646',
         'black-main': '#100F0F',
         'gray-main': '#C1C1C1',
         'black-bg': '#242222',
@@ -48,6 +50,7 @@ module.exports = {
       robotocon: ["'Roboto Condensed'", "sans-serif"],
       dmsans: ["'DM Sans'", "sans-serif"],
       quicksand: ["Quicksand", "sans-serif"],
+      courgette: ["Courgette", "cursive"],
     },
     extend: {
       spacing: {

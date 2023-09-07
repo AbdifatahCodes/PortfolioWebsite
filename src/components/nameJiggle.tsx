@@ -1,7 +1,7 @@
 import { motion, } from "framer-motion";
 import WhichTheme from "@/components/whichTheme"
 
-export default function NameJiggle() {
+export default function NameJiggle( props : any) {
 
   function transitionValues(delayValue: any) {
     let transitionReturn = {
@@ -46,7 +46,7 @@ export default function NameJiggle() {
     )
   }
 
-  const nameList = makeArrrayFromString(process.env.NEXT_PUBLIC_ANIMATED_NAME);
+  const nameList = makeArrrayFromString(props.textValue);
   let delayDifVal = 0.8
 
   const AnimatedLetters = nameList.map((letter, index) => {
@@ -68,7 +68,7 @@ export default function NameJiggle() {
 
   return (
     <motion.div className='flex flex-row px-4 md:px-8 mt-4 mb-2 sm:mb-5 text-3xl sm:text-4xl md:text-6xl font-oswald font-medium text-black dark:text-white'>
-      <p>I'm&nbsp;</p>
+      <p>{props.prefix}</p>
       {AnimatedLetters}
     </motion.div>
   )
