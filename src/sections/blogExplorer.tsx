@@ -8,7 +8,7 @@ export default function BlogExplorer() {
   const postsItems = posts.map(post => (
     <div key={post.id} className="group bg-indigo-200 dark:bg-blog-dark hover:dark:bg-slate-800 hover:bg-gray-light px-5 py-4 rounded-xl space-y-2">
       <div className="space-y-2">
-        <Link href={"/blog/posts/" + post.slugID} className="space-y-1" target="_blank" rel="noopener noreferrer">
+        <Link href={{ pathname: "/blog/posts/[post_route]", query: { post_route: post.slugID}}} className="space-y-1" target="_blank" rel="noopener noreferrer">
           <div className="flex flex-row justify-between">
             <div className="flex flex-row align-baseline space-x-2 font-quicksand text-lg md:text-2xl group-hover:text-indigo-500">
               <p className="font-quicksand text-lg md:text-2xl group-hover:text-indigo-500">{post.title}</p>
