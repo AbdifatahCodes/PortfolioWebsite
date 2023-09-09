@@ -4,6 +4,16 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  exportPathMap: async function(
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      '/blog': { page: '/blog' },
+      '/blog/posts/Welcome-to-My-Blog:-An-Introduction-ldKJH98LKJdkfL': { page: '/blog/posts/[post-route]' },
+    }
+  },
 }
 
 module.exports = nextConfig
