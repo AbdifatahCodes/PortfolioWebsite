@@ -1,7 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-const { PagePaths } = require("./pagePaths.config")
-
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -11,7 +8,11 @@ const nextConfig = {
     defaultPathMap,
     { dev, dir, outDir, distDir, buildId }
   ) {
-    return PagePaths;
+    return {
+      '/': { page: '/' },
+      '/blog': { page: '/blog' },
+      '/blog/posts/Welcome-to-My-Blog:-An-Introduction-ldKJH98LKJdkfL': { page: '/blog/posts/[post_route]' },
+    }
   },
 }
 
