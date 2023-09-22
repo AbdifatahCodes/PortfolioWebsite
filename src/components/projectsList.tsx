@@ -17,7 +17,7 @@ export default function ProjectsList() {
           blurDataURL={project.imgBlurDataUrl}
         />
       </div>
-      <p className='text-gray-dark dark:text-gray-main font-oswald font-medium text-2xl sm:text-3xl md:text-5xl'><KeyWord link="true" no_bg="true" url="/blog">{ project.name }</KeyWord></p>
+      <p className='text-gray-dark dark:text-gray-main font-oswald font-medium text-2xl sm:text-3xl md:text-5xl'><KeyWord link={true} no_bg={true} url="/blog">{ project.name }</KeyWord></p>
       <div className='flex flex-row space-x-2'>
         {
           project.statusCode === "live" ?
