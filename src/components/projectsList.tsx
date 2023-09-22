@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { projects } from './Objects/projectsObj.js'
 import { BsFillCircleFill, BsFillClockFill, } from 'react-icons/bs'
 import { FiExternalLink } from 'react-icons/fi'
-import KeyWord from '@/components/keyWord';
+import KeyWord from '@/components/KeyWord/keyWord';
 
 export default function ProjectsList() {
   const projectsItems = projects.map(project => (

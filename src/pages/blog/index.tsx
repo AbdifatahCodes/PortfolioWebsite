@@ -1,4 +1,4 @@
-import Layout from '@/components/layout'
+import Layout from '@/layouts/layout'
 import BlogExplorer from '@/sections/blogExplorer'
 import BlogHeroSection from '@/sections/blogHero'
 import BlogSummary from '@/sections/blogSummary'

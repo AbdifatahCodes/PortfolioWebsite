@@ -1,5 +1,5 @@
-import NameJiggle from "@/components/nameJiggle"
-import The3Balls from "@/components/the3Balls"
+import NameJiggle from "@/components/NameJiggle/nameJiggle"
+import The3Balls from "@/components/The3Balls/the3Balls"
 import { Link as LinkScroll } from 'react-scroll'
 import { VscDebugContinueSmall } from 'react-icons/vsc'
 
