@@ -11,7 +11,7 @@ export default function Footer() {
     <footer role='footer' id='footer' className='mt-10 bg-white dark:bg-black-main text-gray-dark dark:text-gray-main border border-black dark:border-white'>
       <div id='contact-section' className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto flex flex-col mb-6 md:mb-10'>
         <p className='px-4 md:px-8 mt-6 mb-2 md:mb-4 text-base sm:text-xl md:text-2xl font-quicksand font-bold'>
-          Feel free to reach out or send me an email directly at <KeyWord simple="true">sample@gmail.com</KeyWord>.
+          Feel free to reach out or send me an email directly at <KeyWord simple={true}>sample@gmail.com</KeyWord>.
         </p>
         <div className='px-4 md:px-8'>
           <form action="/" className='space-y-3'>
