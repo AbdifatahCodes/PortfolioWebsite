@@ -1,6 +1,6 @@
 import Layout from '@/layouts/layout'
 import { useRouter } from 'next/router';
-import { posts } from "@/components/Objects/blogPostsObj";
+import { posts } from "@/sections/BlogExplorer/blogPostsObj";
 import The3Balls from '@/components/The3Balls/the3Balls';
 import ScrollProgressIndicator from '@/components/ScrollProgressIndicator/scrollProgressIndicator';
 
