@@ -1,5 +1,5 @@
 import Layout from '@/layouts/layout'
-import BlogExplorer from '@/sections/blogExplorer'
+import BlogExplorer from '@/sections/BlogExplorer/blogExplorer'
 import BlogHeroSection from '@/sections/BlogHero/blogHero'
 import BlogSummary from '@/sections/BlogSummary/blogSummary'
 
