@@ -1,10 +1,10 @@
 import Layout from '@/layouts/layout'
-import AboutSection from '@/sections/about'
+import AboutSection from '@/sections/About/about'
 import HeroSection from '@/sections/Hero/hero'
-import MyBackgroundSection from '@/sections/myBackground'
-import ProjectsSection from '@/sections/projects'
-import SkillsSection from '@/sections/skills'
-import SummarySection from '@/sections/summary'
+import MyBackgroundSection from '@/sections/MyBackground/myBackground'
+import ProjectsSection from '@/sections/Projects/projects'
+import SkillsSection from '@/sections/Skills/skills'
+import SummarySection from '@/sections/Summary/summary'
 
 export default function Home() {
   return (

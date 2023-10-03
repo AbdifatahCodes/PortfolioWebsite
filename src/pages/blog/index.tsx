@@ -1,7 +1,7 @@
 import Layout from '@/layouts/layout'
 import BlogExplorer from '@/sections/blogExplorer'
-import BlogHeroSection from '@/sections/blogHero'
-import BlogSummary from '@/sections/blogSummary'
+import BlogHeroSection from '@/sections/BlogHero/blogHero'
+import BlogSummary from '@/sections/BlogSummary/blogSummary'
 
 export default function Blog() {
   return (
