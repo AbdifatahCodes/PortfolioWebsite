@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BsArrowRight, BsFillEyeFill } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
-import { posts } from "./blogPostsObj";
+import { posts } from "./postsOverviewObj";
 
 export default function BlogExplorer() {
   const postsItems = posts.map(post => (

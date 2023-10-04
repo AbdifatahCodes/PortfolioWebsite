@@ -1,41 +1,48 @@
-import Layout from '@/layouts/layout'
-import { useRouter } from 'next/router';
-import { posts } from "@/sections/BlogExplorer/blogPostsObj";
-import The3Balls from '@/components/The3Balls/the3Balls';
+import Layout from '@/layouts/layout';
 import ScrollProgressIndicator from '@/components/ScrollProgressIndicator/scrollProgressIndicator';
+import { GetServerSideProps } from 'next';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import MDXComponents from '@/components/MDX/mdxComponents';
+import { serialize } from 'next-mdx-remote/serialize';
+import fs from 'fs';
+import path from 'path';
 
-export default function Post() {
-  const router = useRouter();
-  const splitUrl = router.asPath.split('/');
-  const lastSlug = splitUrl[splitUrl.length - 1];
-  console.log(lastSlug);
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  if (!params?.post_route || typeof params.post_route !== 'string') {
+    return { notFound: true };
+  }
 
-  const activePost = posts.filter(post => post.slugID == lastSlug).map(filteredPost => (
-    <div key={filteredPost.id}>
-      <ScrollProgressIndicator />
-      <div className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto bg-white dark:bg-black rounded-xl sm:rounded-3xl shadow-lg items-center border'>
-        <div className="mb-10 space-y-3">
-          <div className="flex flex-row justify-between">
-            <p className="p-6 mt-5 md:px-8 font-extrabold font-oswald text-5xl mb-3">{filteredPost.title}</p>
-            <The3Balls />
-          </div>
-          <div className="px-4 mb-4 md:px-8 space-y-3">
-            {filteredPost.content?.map((paragraph, index) => (
-              <p key={index} className="font-extrabold font-quicksand text-lg text-gray-light">{paragraph}</p>
-              ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  ));
+  const slug = params.post_route;
+  const filePath = path.join(process.cwd(), 'src/pages/blog/posts/MDX', `${slug}.mdx`);
 
-  return (
-    <Layout title={lastSlug}>
-      <div id='post' className='space-y-6 lg:space-y-12'>
-        <div>{activePost}</div>
-        <div id='divider' className='p-1'></div>
-      </div>
-    </Layout>
+  if (!fs.existsSync(filePath)) {
+    return { notFound: true };
+  }
 
-  )
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const mdxSource = await serialize(fileContents);
+
+  return { props: { mdxSource, slug } };
+};
+
+interface PostProps {
+  mdxSource: MDXRemoteSerializeResult;
+  slug: string;
 }
+
+const Post: React.FC<PostProps> = ({ mdxSource, slug }) => (
+  <Layout title={slug}>
+    <div className="mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto p-8 bg-white dark:bg-black rounded-xl sm:rounded-3xl shadow-lg items-center border">
+      <ScrollProgressIndicator />
+      <div id="Watermark">
+        <p className="fixed bottom-10 left-0 -z-10 font-quicksand font-extrabold text-9xl dark:text-watermark-dark text-watermark-light">
+          Abdifatah's Blog.
+        </p>
+      </div>
+      <MDXRemote {...mdxSource} components={MDXComponents} />
+      <div className="p-1" />
+    </div>
+  </Layout>
+);
+
+export default Post;
