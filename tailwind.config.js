@@ -8,6 +8,9 @@ module.exports = {
  
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
+
+    // Exposing my MDX custom components file
+    "./*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
