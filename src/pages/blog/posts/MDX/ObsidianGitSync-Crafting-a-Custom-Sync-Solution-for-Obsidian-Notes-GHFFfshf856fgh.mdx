@@ -1,0 +1,121 @@
+# ObsidianGitSync: Crafting a Custom Sync Solution for Obsidian Notes.
+
+### Introduction
+
+As a software developer and an advocate for cost-effective and efficient solutions, I embarked on an intriguing journey to create "ObsidianGitSync," a program designed to sync Obsidian notes to a Git repository. My motivation was simple: avoid the cost of Obsidian's official sync service and craft a tool tailored to my needs, with capabilities extending beyond available extensions.
+
+### The Genesis of ObsidianGitSync
+
+My journey with ObsidianGitSync began with a straightforward need: syncing my Obsidian notes without paying for the official service. Existing Obsidian extensions, primarily JavaScript-based, didn't cater to my specific requirement of Android compatibility. Thus, the quest to build my version began, leveraging the robustness of C++ and eyeing future integration with an Android app via Kotlin JNI.
+
+### The Technical Road: Choices and Challenges
+
+**1. Language of Choice: C++**
+
+- **Why C++?** The decision to use C++ was driven by its unparalleled performance and system-level control. This language, known for its power in handling resource-intensive applications, provided the necessary tools to develop a robust syncing mechanism. It also set the stage for future integrations, notably with Android via Kotlin JNI, ensuring cross-platform compatibility and opening doors for mobile functionality.
+
+**2. Operating System Focus: Linux**
+
+- **Linux-First Approach:** Focusing on Linux, an operating system I deeply admire for its flexibility and open-source nature, was a strategic choice. This decision was not only a personal preference but also a nod to the wide community of Linux users who value customization and control over their digital tools. Linux’s robustness and versatility made it an ideal platform for developing a daemon process—a background service that could efficiently handle the syncing of files.
+
+**3. Authentication: SSH for Git**
+
+- **Security First:** In the world of software development, security is paramount. Thus, choosing SSH for Git remote authentication was a critical decision. SSH, known for its secure data communication capabilities, provided a secure channel over an unsecured network, ensuring that all data synced through ObsidianGitSync was protected from unauthorized access. This choice not only reinforced the security of the syncing process but also aligned with best practices in software development.
+
+**4. Simplifying User Experience: Bash Installation Script**
+
+- **Ease of Setup:** Recognizing that the installation process can often be a barrier to entry for many users, I developed a bash script to simplify the setup. This script automates the installation process, effectively handling the initial setup tasks like cloning the necessary repository into the user’s Obsidian workspace and setting up the initial configuration. This approach was particularly important to make the tool accessible to users who might not be deeply versed in technical procedures, thereby broadening its appeal and usability.
+
+**5. Architecture Design: Daemon Service**
+
+- **Behind-the-Scenes Efficiency:** Designing the program as a daemon service was a strategic choice. Running in the background, this service continuously monitors the Obsidian workspace for changes, syncing them automatically to the Git repository. This approach not only ensures that the latest changes are always backed up but also provides a seamless user experience. The user does not need to manually initiate syncs, making their interaction with Obsidian as natural and uninterrupted as possible.
+
+**6. Configuration and Logging: Empowering the User**
+
+- **Customization and Transparency:** A key aspect of ObsidianGitSync is its configurable nature, coupled with comprehensive logging. Users have the flexibility to specify their preferences and settings through configuration files. Additionally, the inclusion of a detailed logging mechanism ensures transparency in the syncing process. Users can easily track the operations of the daemon, understand any issues, and gain insights into the sync process, fostering a sense of control and trust in the tool.
+
+### Navigating Complexities
+
+Every step in this journey brought its own set of complexities. The use of C++ required meticulous attention to memory management and error handling, more so than in higher-level languages. Crafting a user-friendly interface on top of a C++ backend also posed its challenges, demanding a balance between performance and ease of use. Yet, these complexities were not roadblocks but catalysts for innovation, pushing the boundaries of what I could achieve with ObsidianGitSync.
+
+### Embracing Open Source
+
+An integral part of this project was embracing the open-source ethos. By making ObsidianGitSync available on GitHub, I invited collaboration and feedback from a community of like-minded individuals. This collaborative approach not only refined the tool but also fostered a sense of community among users and developers who share a passion for efficient and effective software solutions.
+
+### Overcoming Roadblocks and Celebrating Successes
+
+The development journey wasn't without its hurdles. Adapting C++ for a task typically handled by higher-level languages posed its set of challenges, from handling dependencies to ensuring seamless Git interactions. However, every roadblock turned into a learning opportunity, honing my skills further.
+
+Successes were sweet. The program, in its current iteration, effectively clones a blank repo to the user's Obsidian workspace (used as a vault) and periodically pushes changes to the remote repository. This functionality marked a significant milestone in the project's lifecycle.
+
+### Trade-Offs: Balancing Act
+
+Innovation often requires compromise. Choosing C++ over more common scripting languages for Obsidian extensions meant dealing with a steeper learning curve and more complex debugging. However, this decision was crucial for long-term goals, particularly Android compatibility and performance optimization.
+
+### Tutorial: Setting Up and Using ObsidianGitSync
+
+## Prerequisites
+Before installing ObsidianGitSync, ensure that the [Obsidian Desktop App](https://obsidian.md/Download) for Linux is installed on your system.
+
+## Installation
+To install ObsidianGitSync on most Linux distributions, use the provided installation script. Run the following commands to download and execute the script:
+
+```bash
+curl -L -o installation.sh "https://github.com/AbdifatahCodes/ObsidianGitSync/releases/download/installation/installation.sh"
+bash installation.sh
+```
+
+This script performs several actions:
+
+- Installs all necessary dependencies.
+- Downloads and installs the ObsidianGitSync binary.
+- Initializes required files and directories for operation.
+- Adds default configuration variables to ~/.config/ObsidianGitSync/config.txt.
+- Generates an SSH key pair in ~/.config/ObsidianGitSync/.ssh/.
+
+## Setup.
+Follow these steps to configure ObsidianGitSync for use:
+
+### 1 - Add the New SSH Key to your GitHub Account.
+- Locate the public SSH key at `~/.config/ObsidianGitSync/.ssh/ObsidianGitSync.pub`.
+- Copy its contents.
+- Go to Add a [New SSH Key](https://github.com/settings/ssh/new) on GitHub.
+- Paste the copied key and set "ObsidianGitSync" as the title.
+
+### 2 - Create a Blank Repository on GitHub for Your Obsidian Vault.
+- Visit [GitHub](https://github.com) and create a new blank repository.
+- Copy the name of this new repository.
+- Modify the `MAIN_REPOSITORY` variable in `~/.config/ObsidianGitSync/config.txt` to match the copied repository name.
+
+### 3 - Personalize the Configuration File.
+- Open `~/.config/ObsidianGitSync/config.txt` in a text editor.
+- Change the `GIT_USERNAME` variable to your Git username.
+- Adjust other variables as needed, e.g., change `GIT_HOST` to gitlab.com if you use GitLab.
+- Leave `WORKSPACE_DIR` as `~/Documents/Documents/Obsidian`. This directory is where your repository will be cloned. Changing this path may cause the tool to malfunction.
+
+### 4 - Finish installation.
+Complete the installation process by running ObsidianGitSync as a background service:
+```bash
+sudo systemctl enable obsidian-git-sync.service
+sudo systemctl start obsidian-git-sync.service
+```
+
+To stop the the service: 
+```bash
+sudo systemctl stop obsidian-git-sync.service
+```
+
+## Issues.
+If you encounter any issues after following the instructions:
+
+- Open an issue in the [ObsidianGitSync GitHub repository](https://github.com/AbdifatahCodes/ObsidianGitSync/issues).
+- Include the contents of your `config.txt` and `logfile.txt` for troubleshooting assistance.
+
+
+### Enjoy Seamless Sync
+
+- ObsidianGitSync will now automatically detect changes in your Obsidian workspace and sync them to your Git repository.
+
+### Conclusion
+
+ObsidianGitSync stands as a testament to the power of personalized software solutions. It's not just a tool; it's a reflection of innovation, learning, and the triumph of creating something uniquely suited to one's needs. The journey continues with plans to enhance its capabilities, particularly the integration with Android platforms. Stay tuned for more updates as ObsidianGitSync evolves to new heights!

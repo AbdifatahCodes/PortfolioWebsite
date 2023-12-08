@@ -11,7 +11,7 @@ export default function Footer() {
     <footer role='footer' id='footer' className='mt-10 bg-white dark:bg-black-main text-gray-dark dark:text-gray-main border border-black dark:border-white'>
       <div id='contact-section' className='mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto flex flex-col mb-6 md:mb-10'>
         <p className='px-4 md:px-8 mt-6 mb-2 md:mb-4 text-base sm:text-xl md:text-2xl font-quicksand font-bold'>
-          Feel free to reach out or send me an email directly at <KeyWord simple={true}>sample@gmail.com</KeyWord>.
+          Feel free to reach out or send me an email directly at <KeyWord simple={true}>abdifatahosman.dev@gmail.com</KeyWord>.
         </p>
         <div className='px-4 md:px-8'>
           <form action="/" className='space-y-3'>
@@ -21,8 +21,8 @@ export default function Footer() {
             </div>
             <textarea name='message' placeholder='Message' className={commonInputStyles} />
             <div className='flex flex-row justify-between text-gray-dark dark:text-gray-main'>
-              <button className='text-xl sm:text-2xl md:text-3xl font-dmsans font-bold bg-black dark:bg-white p-1 px-3 md:p-2 md:px-6 text-gray-main dark:text-gray-dark rounded-md'>Submit</button>
-              <a href='#'>
+              <button disabled={true} className='text-xl sm:text-2xl md:text-3xl font-dmsans font-bold bg-black dark:bg-white p-1 px-3 md:p-2 md:px-6 text-gray-main dark:text-gray-dark rounded-md'>Submit</button>
+              <a title='The contact form is not operational for now. Send me an email directly.'>
                 <BsQuestionCircle className='align-text-middle mt-1 md:mt-3 mr-3' size={25} />
               </a>
             </div>

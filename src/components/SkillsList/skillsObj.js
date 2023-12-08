@@ -33,6 +33,10 @@ export const skills = [
   },
   {
     id: 8,
+    name: 'C++',
+  },
+  {
+    id: 9,
     name: 'NoSql & Git',
   },
 ]

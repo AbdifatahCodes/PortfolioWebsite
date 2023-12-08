@@ -19,7 +19,9 @@ const nextConfig = {
   //   return {
   //     '/': { page: '/' },
   //     '/blog': { page: '/blog' },
-  //     '/blog/posts/Welcome-to-My-Blog:-An-Introduction-ldKJH98LKJdkfL': { page: '/blog/posts/[post_route]' },
+  //     '/resume': { page: '/resume' },
+  //     '/blog/posts/Welcome-to-My-Blog-An-Introduction-ldKJH98LKJdkfL': { page: '/blog/posts/[post_route]' },
+  //     '/blog/posts/ObsidianGitSync-Crafting-a-Custom-Sync-Solution-for-Obsidian-Notes-GHFFfshf856fgh': { page: '/blog/posts/[post_route]' },
   //   }
   // },
 }
