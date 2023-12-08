@@ -24,7 +24,7 @@ const ProjectItem = ({ project }: { project: ProjectType}) => {
 
   return (
     <div key={id} className='flex flex-col space-y-2 mr-0'>
-      <div className='bg-black dark:bg-white rounded-md'>
+      <div className='bg-black dark:bg-white rounded-xl'>
         <Image
           src={imgUrl}
           width={imgWidth}
@@ -35,7 +35,7 @@ const ProjectItem = ({ project }: { project: ProjectType}) => {
         />
       </div>
       <p className='text-gray-dark dark:text-gray-main font-oswald font-medium text-2xl sm:text-3xl md:text-5xl'>
-        <KeyWord link={true} no_bg={true} url="/blog">{name}</KeyWord>
+        <KeyWord link={true} no_bg={true} url={liveUrl}>{name}</KeyWord>
       </p>
       <div className='flex flex-row space-x-2'>
         {statusCode === "live" ? <BsFillCircleFill color='#00FF0F' className='mt-1' /> : <BsFillClockFill color='#5AC8FA' className='mt-1' />}
@@ -48,7 +48,7 @@ const ProjectItem = ({ project }: { project: ProjectType}) => {
           <FiExternalLink />
         </a>
         <a href={liveUrl} className='flex flex-row space-x-1 hover:underline underline-offset-4' target="_blank" rel="noopener noreferrer">
-          <span>View Live</span>
+          <span>View Repo</span>
           <FiExternalLink />
         </a>
       </div>
