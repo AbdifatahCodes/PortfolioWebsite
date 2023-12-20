@@ -19,4 +19,14 @@ export const posts = [
     dislikes: 0,
     dateOfMaking: '17-11-2023',
   },
+  {
+    id: 2,
+    slugID: 'Node.js-Security-Best-Practices-with-OAuth-&-JWT-Implementation-OHkkjajHIUhfjkdj',
+    title: 'Node.js Security Best Practices with OAuth & JWT Implementation.',
+    bait: "In the ever-evolving landscape of web development, Node.js has emerged as a beacon of efficiency and flexibility. This JavaScript runtime, built on Chrome's V8 engine, has revolutionized how developers conceive and implement server-side logic. Its non-blocking, event-driven architecture lends itself to the creation of scalable network applications, making it a preferred choice for many full-stack developers, especially those leveraging JavaScript's universality. However, with great power comes great responsibility, and this is particularly true when it comes to the realm of web application security.",
+    views: 0,
+    likes: 0,
+    dislikes: 0,
+    dateOfMaking: '20-12-2023',
+  },
 ]
