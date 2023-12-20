@@ -29,6 +29,7 @@ module.exports = {
         'watermark-light': '#3b63a6',
         'blog-dark': '#010817',
         'blog-pale-dark': '#172646',
+        'code-dark-bg': '#282a36',
         'black-main': '#100F0F',
         'gray-main': '#C1C1C1',
         'black-bg': '#242222',
