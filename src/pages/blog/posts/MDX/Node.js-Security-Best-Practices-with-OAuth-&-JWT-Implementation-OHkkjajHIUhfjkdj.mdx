@@ -57,8 +57,6 @@ Integrating OAuth and JWT in Node.js is not just about implementing libraries or
 As we explore the solution to Node.js security challenges, we'll delve into how these technologies and practices have evolved, their underlying principles, and how they can be effectively implemented in a Node.js environment. This exploration will not only help us in securing our applications but also in understanding the 'why' behind every practice, ensuring a deep-rooted and comprehensive approach to web application security.
 
 
----
-
 ## Solution Explanation: Crafting a Secure Node.js Application with OAuth and JWT
 
 In this comprehensive guide, we'll walk through implementing robust security in a Node.js application using OAuth for Google login and JWT for stateless authentication. We'll be using TypeScript for its added benefits in type checking and error prevention.
@@ -77,57 +75,88 @@ Before diving into the implementation, ensure your development environment is eq
 
 Initialize your project and install the necessary dependencies:
 
-bash
-
-`yarn init -y yarn add express passport passport-google-oauth20 jsonwebtoken bcryptjs helmet cors yarn add -D typescript @types/node @types/express @types/passport-google-oauth20`
+``` bash
+yarn init -y yarn add express passport passport-google-oauth20 jsonwebtoken bcryptjs helmet cors
+yarn add -D typescript @types/node @types/express @types/passport-google-oauth20
+```
 
 ## Backend Setup (TypeScript)
 
 ### Configuring TypeScript
 
-Create a `tsconfig.json` file in your project root:
+Create a tsconfig.json file in your project root:
 
-json
-
-`{   "compilerOptions": {     "target": "es6",     "module": "commonjs",     "outDir": "./dist",     "strict": true,     "esModuleInterop": true   } }`
+```json
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"strict": true,
+		"esModuleInterop": true
+	}
+}
+```
 
 ### Implementing Google OAuth in Express
 
 Set up Google OAuth using Passport:
 
 1. **Initialize Passport with the Google Strategy:**
-    
-    typescript
-    
 
-- `import express from 'express'; import passport from 'passport'; import { Strategy as GoogleStrategy } from 'passport-google-oauth20';  const app = express();  passport.use(new GoogleStrategy({     clientID: process.env.GOOGLE_CLIENT_ID,     clientSecret: process.env.GOOGLE_CLIENT_SECRET,     callbackURL: "/auth/google/callback"   },   (accessToken, refreshToken, profile, cb) => {     // Here, you would find or create a user in your database     const user = { googleId: profile.id, ...profile };     return cb(null, user);   } ));`
-    
+```typescript
+import express from 'express'; 
+import passport from 'passport'; 
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';  
+const app = express();  
+passport.use(new GoogleStrategy({
+	clientID: process.env.GOOGLE_CLIENT_ID,
+	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+	callbackURL: "/auth/google/callback"
+},   (accessToken, refreshToken, profile, cb) => {
+	// Here, you would find or create a user in your database     
+	const user = { googleId: profile.id, ...profile };
+	return cb(null, user);
+} ));
+```
+
 - **Create Routes for Google Authentication:**
-    
-    typescript
-    
 
-1. `app.get('/auth/google',   passport.authenticate('google', { scope: ['profile', 'email'] }));  app.get('/auth/google/callback',    passport.authenticate('google', { failureRedirect: '/login' }),   (req, res) => {     // Successful authentication, redirect home.     res.redirect('/');   });`
-    
+```typescript
+app.get('/auth/google',   passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/auth/google/callback',    passport.authenticate('google', { failureRedirect: '/login' }),   (req, res) => {
+	// Successful authentication, redirect home.
+	res.redirect('/');   
+});
+```
 
 ### JWT Authentication
 
 Implement JWT for user authentication:
 
 1. **Function to Generate JWT Token:**
-    
-    typescript
-    
 
-- `import jwt from 'jsonwebtoken'; const SECRET_KEY = process.env.SECRET_KEY;  const generateToken = (user: any): string => {   return jwt.sign({ userId: user.googleId }, SECRET_KEY, { expiresIn: '1h' }); };`
-    
+```typescript
+import jwt from 'jsonwebtoken'; const SECRET_KEY = process.env.SECRET_KEY;
+const generateToken = (user: any): string => {   
+	return jwt.sign({ userId: user.googleId }, SECRET_KEY, { expiresIn: '1h' }); };
+```
+
 - **Middleware to Verify Token:**
-    
-    typescript
-    
 
-1. `const verifyToken = (req: express.Request, res: express.Response, next: express.NextFunction) => {   const token = req.headers.authorization?.split(' ')[1];   if (!token) {     return res.status(403).send('A token is required for authentication');   }   try {     const decoded = jwt.verify(token, SECRET_KEY);     req.user = decoded;   } catch (err) {     return res.status(401).send('Invalid Token');   }   return next(); };`
-    
+```typescript
+const verifyToken = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+	const token = req.headers.authorization?.split(' ')[1];   
+	if (!token) {     
+		return res.status(403).send('A token is required for authentication');   
+	}   try {     
+		const decoded = jwt.verify(token, SECRET_KEY);     
+		req.user = decoded;   
+	} catch (err) {     
+		return res.status(401).send('Invalid Token');   
+	}   return next(); 
+};
+```
 
 ## Frontend Setup (React)
 
@@ -136,19 +165,20 @@ Implement JWT for user authentication:
 Store and manage JWT in the browser's storage API:
 
 1. **Storing the Token:**
-    
-    typescript
-    
 
-- `const storeToken = (token: string) => {   window.localStorage.setItem('authToken', token); };`
-    
+```typescript
+const storeToken = (token: string) => {
+	window.localStorage.setItem('authToken', token);
+};
+```
+
 - **Retrieving the Token:**
-    
-    typescript
-    
 
-1. `const getToken = (): string | null => {   return window.localStorage.getItem('authToken'); };`
-    
+```typescript
+const getToken = (): string | null => {
+	return window.localStorage.getItem('authToken');
+};
+```
 
 ## Integrating Frontend with Google OAuth
 
@@ -159,7 +189,6 @@ Store and manage JWT in the browser's storage API:
 2. **Handling the Redirect After Successful Login:**
     
     Once the user is authenticated and redirected back to your application, extract the JWT token (provided by your backend) and store it using the `storeToken` function.
-    
 
 ## Conclusion
 
@@ -185,41 +214,95 @@ This implementation provides a secure setup for a Node.js application using Type
 
 **index.ts**
 
-typescript
-
-``import express from 'express'; import './passportConfig'; import authRoutes from './authRoutes';  const app = express(); const PORT = process.env.PORT || 3000;  app.use('/auth', authRoutes);  app.listen(PORT, () => {   console.log(`Server is running on port ${PORT}`); });``
+```typescript
+import express from 'express';
+import './passportConfig';
+import authRoutes from './authRoutes';
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.use('/auth', authRoutes);
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
+});
+```
 
 **authRoutes.ts**
 
-typescript
-
-``import express from 'express'; import passport from 'passport'; import { generateToken } from './jwtUtils';  const router = express.Router();  router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));  router.get('/google/callback',    passport.authenticate('google', { failureRedirect: '/login' }),   (req, res) => {     const token = generateToken(req.user);     res.redirect(`/success?token=${token}`);   } );  export default router;``
+```typescript
+import express from 'express';
+import passport from 'passport';
+import { generateToken } from './jwtUtils';
+const router = express.Router();
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/google/callback',
+		   passport.authenticate('google', { failureRedirect: '/login' }),  
+		   (req, res) => {
+			   const token = generateToken(req.user);
+			   res.redirect(`/success?token=${token}`);
+			}
+); 
+export default router;
+```
 
 **jwtUtils.ts**
 
-typescript
-
-`import jwt from 'jsonwebtoken'; const SECRET_KEY = process.env.SECRET_KEY;  export const generateToken = (user: any): string => {   return jwt.sign({ userId: user.googleId }, SECRET_KEY, { expiresIn: '1h' }); };  // Additional JWT utility functions...`
+```typescript
+import jwt from 'jsonwebtoken';
+const SECRET_KEY = process.env.SECRET_KEY;
+export const generateToken = (user: any): string => {
+	return jwt.sign({ userId: user.googleId }, SECRET_KEY, { expiresIn: '1h' }); };  // Additional JWT utility functions...
+```
 
 ## Frontend Code Snippets
 
 **App.tsx**
 
-typescript
-
-`import React from 'react'; import Login from './Login'; import { AuthTokenProvider } from './AuthTokenContext';  const App = () => {   return (     <AuthTokenProvider>       <div>         <h1>My Secure App</h1>         <Login />       </div>     </AuthTokenProvider>   ); };  export default App;`
+```typescript
+import React from 'react';
+import Login from './Login';
+import { AuthTokenProvider } from './AuthTokenContext';
+const App = () => {
+	return (
+		<AuthTokenProvider>
+			<div>
+				<h1>My Secure App</h1>
+				<Login />
+			</div>
+		</AuthTokenProvider>
+	);
+};
+export default App;
+```
 
 **Login.tsx**
 
-typescript
-
-`import React from 'react';  const Login = () => {   const handleGoogleLogin = () => {     window.location.href = 'http://localhost:3000/auth/google';   };    return (     <button onClick={handleGoogleLogin}>Login with Google</button>   ); };  export default Login;`
+```typescript
+import React from 'react';
+const Login = () => {
+	const handleGoogleLogin = () => {
+		window.location.href = 'http://localhost:3000/auth/google';
+	};
+	return (
+		<button onClick={handleGoogleLogin}>Login with Google</button>
+	);
+};
+export default Login;
+```
 
 **AuthTokenContext.tsx**
 
-typescript
-
-`import React, { createContext, useState } from 'react';  export const AuthTokenContext = createContext(null);  export const AuthTokenProvider = ({ children }) => {   const [authToken, setAuthToken] = useState(null);    return (     <AuthTokenContext.Provider value={{ authToken, setAuthToken }}>       {children}     </AuthTokenContext.Provider>   ); };`
+```typescript
+import React, { createContext, useState } from 'react';
+export const AuthTokenContext = createContext(null);
+export const AuthTokenProvider = ({ children }) => {
+	const [authToken, setAuthToken] = useState(null);
+	return (
+		<AuthTokenContext.Provider value={{ authToken, setAuthToken }}>     
+			{children}
+		</AuthTokenContext.Provider>
+	);
+};
+```
 
 This mini-project serves as an example of integrating Google OAuth and JWT in a Node.js/React application.
 
@@ -235,34 +318,42 @@ Unit tests are essential to ensure that individual components of your applicatio
 1. **Setting Up Jest:**
     
     First, add Jest to your project:
-    
-    bash
-    
 
-`yarn add --dev jest @types/jest ts-jest`
+```bash
+yarn add --dev jest @types/jest ts-jest
+```
 
 Then, configure Jest for TypeScript in `jest.config.js`:
 
-javascript
+```javascript
+module.exports = {
+	preset: 'ts-jest',
+	testEnvironment: 'node',
+};
+```
 
-- `module.exports = {   preset: 'ts-jest',   testEnvironment: 'node', };`
-    
 - **Writing Unit Tests:**
     
     Create tests for your utility functions, like JWT token generation. For example, in `jwtUtils.test.ts`:
-    
-    typescript
-    
 
-`import { generateToken } from './jwtUtils';  describe('JWT Utility Functions', () => {   it('should generate a JWT token', () => {     const user = { googleId: '123' };     const token = generateToken(user);     expect(token).toBeDefined();     expect(typeof token).toBe('string');   });    // Additional tests... });`
+```typescript
+import { generateToken } from './jwtUtils';
+describe('JWT Utility Functions', () => {
+	it('should generate a JWT token', () => {
+		const user = { googleId: '123' };
+		const token = generateToken(user);
+		expect(token).toBeDefined();
+		expect(typeof token).toBe('string');   
+	});
+	// Additional tests... 
+});
+```
 
 Run your tests with:
 
-bash
-
-1. `yarn jest`
-    
-
+```bash
+yarn jest
+```
 ## Integration Testing for OAuth/JWT Implementation
 
 Integration tests verify that different parts of the application work together as expected. This is crucial for OAuth/JWT implementation.
@@ -270,21 +361,27 @@ Integration tests verify that different parts of the application work together a
 1. **Setting Up Supertest:**
     
     Install Supertest for HTTP assertions:
-    
-    bash
-    
 
-- `yarn add --dev supertest`
+```bash
+yarn add --dev supertest
+```
     
 - **Writing Integration Tests:**
     
     Test the OAuth and JWT flow. For example, in `authRoutes.test.ts`:
-    
-    typescript
-    
 
-1. `import request from 'supertest'; import app from './index';  describe('OAuth and JWT Integration', () => {   it('should redirect to Google OAuth', async () => {     const response = await request(app).get('/auth/google');     expect(response.status).toBe(302);     expect(response.header.location).toContain('accounts.google.com');   });    // Additional tests... });`
-    
+```typescript
+import request from 'supertest';
+import app from './index';
+describe('OAuth and JWT Integration', () => {
+	it('should redirect to Google OAuth', async () => {
+		const response = await request(app).get('/auth/google');     
+		expect(response.status).toBe(302);     
+		expect(response.header.location).toContain('accounts.google.com');
+	});
+	// Additional tests...
+});
+```
 
 ## Security Testing and Vulnerability Scanning
 
@@ -314,22 +411,31 @@ In the realm of web application security, one way to enhance user trust and appl
 1. **Implementing 2FA with a One-Time Password (OTP):**
     
     Use an OTP sent to the user's email or phone. Libraries like `speakeasy` or services like Twilio can be used for generating and verifying OTPs.
-    
-    bash
-    
 
-`yarn add speakeasy nodemailer`
+```bash
+yarn add speakeasy nodemailer
+```
 
 In your Node.js backend, set up an endpoint to generate and verify OTPs:
 
 typescript
 
-1. `import * as speakeasy from 'speakeasy';  app.post('/generate-otp', (req, res) => {   const secret = speakeasy.generateSecret({ length: 20 });   res.send({ secret: secret.base32 }); });  app.post('/verify-otp', (req, res) => {   const { token, secret } = req.body;   const verified = speakeasy.totp.verify({ secret, encoding: 'base32', token });   res.send({ verified }); });`
-    
+```typescript
+import * as speakeasy from 'speakeasy';
+app.post('/generate-otp', (req, res) => {
+	const secret = speakeasy.generateSecret({ length: 20 });
+	res.send({ secret: secret.base32 });
+}); 
+app.post('/verify-otp', (req, res) => {
+	const { token, secret } = req.body;
+	const verified = speakeasy.totp.verify({ secret, encoding: 'base32', token });
+	res.send({ verified });
+});
+``` 
+
 2. **Integrating 2FA in the Frontend:**
     
     On your React frontend, create a new component for handling OTP input. After the regular login, prompt the user to enter the OTP sent to their email or phone.
-    
 
 ## API Throttling
 
@@ -338,22 +444,28 @@ API Throttling is a technique used to control the amount of incoming requests to
 1. **Implementing Throttling Using Express Middleware:**
     
     Use a package like `express-rate-limit` to limit repeated requests to public APIs and endpoints.
-    
-    bash
-    
 
-`yarn add express-rate-limit`
+```bash
+yarn add express-rate-limit
+```
 
 Apply rate limiting middleware to your express application:
 
 typescript
 
-1. `import rateLimit from 'express-rate-limit';  const apiLimiter = rateLimit({   windowMs: 15 * 60 * 1000, // 15 minutes   max: 100 // limit each IP to 100 requests per windowMs });  // Apply to all requests app.use(apiLimiter);`
-    
+```typescript
+import rateLimit from 'express-rate-limit';
+const apiLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100 // limit each IP to 100 requests per windowMs
+});  // Apply to all requests 
+app.use(apiLimiter);
+```
+   
 2. **Configuring and Customizing Limits:**
     
     Customize the rate limits based on your application's needs. Consider different limits for authenticated users versus anonymous users.
-    
+
 
 ## Conclusion
 
@@ -382,7 +494,6 @@ As we conclude this comprehensive exploration of security in Node.js application
 7. **API Throttling:** Implement rate limiting to prevent abuse of your API endpoints.
     
 8. **Two-Factor Authentication:** Enhance user authentication security with additional verification steps like OTPs.
-    
 
 ## Future Trends in Web Security
 
@@ -417,7 +528,6 @@ This comprehensive guide has provided an in-depth look into the implementation o
 3. **Future-Proofing Security:** An awareness of the evolving landscape in web security, including emerging technologies and methodologies, is essential for future-proofing your applications.
     
 4. **The Role of TypeScript:** Emphasizing the benefits of TypeScript in Node.js applications for enhanced security through static typing and error checking.
-    
 
 ### Next Steps in Learning Node.js Security
 
@@ -430,7 +540,6 @@ To further your expertise in Node.js security, consider the following steps:
 3. **Explore Advanced Topics:** Dive into more complex areas like blockchain for security, quantum-resistant cryptography, and privacy-enhancing technologies.
     
 4. **Continuous Learning:** Consider taking advanced courses or certifications in cybersecurity and web application security.
-    
 
 ## Additional Resources
 
