@@ -18,7 +18,7 @@ const CodeBlock = ({ children, ...props }: HTMLAttributes<HTMLParagraphElement>)
   if (props.className && props.className.startsWith('language-')) {
     const language = props.className.replace(/language-/, '');
     return (
-      <div className='flex flex-col w-auto relative space-y-5'>
+      <div className='flex flex-col w-auto relative space-y-5 z-10'>
         <div className='copy-code bg-black-bg flex flex-row justify-between absolute w-full py-2 rounded-t text-xs px-4'>
             <p>{language}</p>
             <button
