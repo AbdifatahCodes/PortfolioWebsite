@@ -1,3 +1,4 @@
+import React from 'react';
 import Layout from '@/layouts/layout';
 import ScrollProgressIndicator from '@/components/ScrollProgressIndicator/scrollProgressIndicator';
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -6,6 +7,8 @@ import MDXComponents from '@/components/MDX/mdxComponents';
 import { serialize } from 'next-mdx-remote/serialize';
 import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
+import Head from 'next/head';
 
 // This function runs at build time and specifies which paths to pre-render.
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -16,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,  // Set to true if you want to enable on-demand SSR for paths not generated at build time.
+    fallback: false,
   };
 };
 
@@ -34,21 +37,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const fileContents = fs.readFileSync(filePath, 'utf8');
-  const mdxSource = await serialize(fileContents);
+  const { content, data } = matter(fileContents); // Extract frontmatter
+  const mdxSource = await serialize(content);
 
   return {
-    props: { mdxSource, slug },
-    revalidate: 1,  // Optionally, specify how often (in seconds) to revalidate this data.
+    props: { mdxSource, slug, frontmatter: data },
+    revalidate: 1,
   };
 };
 
 interface PostProps {
   mdxSource: MDXRemoteSerializeResult;
   slug: string;
+  frontmatter: { [key: string]: any }; // Type for frontmatter
 }
 
-const Post: React.FC<PostProps> = ({ mdxSource, slug }) => (
+const Post: React.FC<PostProps> = ({ mdxSource, slug, frontmatter }) => (
   <Layout title={slug}>
+    <Head>
+      <meta property="og:image" content={frontmatter.ogImage} />
+      {/* Other OG tags can be added here */}
+    </Head>
     <div className="mx-2 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl md:mx-auto p-8 bg-white dark:bg-black rounded-xl sm:rounded-3xl shadow-lg items-center border">
       <ScrollProgressIndicator />
       <div id="Watermark">
